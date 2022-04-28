@@ -1,0 +1,44 @@
+.lottie {
+    background-color: rgba(232, 14, 14, 0);
+    position: absolute;
+    margin-bottom: 200px;
+}
+
+.header{
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.title {
+    position: relative;
+    top: 25%;
+    font-size: 40px;
+    color: #333333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.notice {
+    position: absolute;
+    top: 10%;
+}
+
+.js_result {
+    position: absolute;
+    bottom: 40%;
+}
+
+.form {
+  display: none;
+}
+
+
+.showing {
+    display: block;
+    transition: color .5s ease-in-out;
+    font-size: 34px;
+    margin-top: 0px;
+  }
