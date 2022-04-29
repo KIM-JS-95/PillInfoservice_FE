@@ -7,11 +7,10 @@ html {
 
 body {
   background-color: #a598ee;
-  margin: 0;
+  padding: 0%;
   text-align: center;
   animation: fadeIn 1s linear;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -72,7 +71,7 @@ pre {
   /* 2 */
 }
 
-/* Text-level semantics
+/* Text-level 
    ========================================================================== */
 /**
  * 1. Remove the gray background on active links in IE 10.
@@ -782,14 +781,19 @@ legend {
 }
 
 .s003 {
-  min-height: 80%;
+  position: relative;
+  bottom: 10%;
+  margin-top: 10%;
+  min-height: 10%;
   display: -ms-flexbox;
   display: flex;
+
   -ms-flex-pack: center;
       justify-content: center;
   -ms-flex-align: center;
       align-items: center;
   font-family: 'Poppins', sans-serif;
+
   background-size: cover;
   background-position: center center;
   padding: 15px;

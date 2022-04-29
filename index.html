@@ -5,64 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="author" content="colorlib.com">
+
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
   <link href="css/main.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
 </head>
 
-<header class="heaer">
-  <span class = "notice">공지사항</span>
-</header>
+<div class="hide">
 
-<body>
-
+  <span class="notice">공지사항</span>
   <h2 class="title">Eat Before Knowing The Medicine</h2>
 
-  <div class="s003">
-    <div class="lottie">
-      <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_wocjek3q.json" mode="bounce"
-        background="rgba(232, 14, 14, 0)" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
-    </div>
+  <body>
 
-    <form class ="btn-search">
-      <div class="inner-form">
-        <div class="input-field first-wrap">
-          <div class="input-select">
-            <select class="selectbox" data-trigger="">
-              <option placeholder="">Category</option>
-              <option value=1>품목명</option>
-            </select>
+    <div class="s003">
+      <div class="lottie">
+        <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_wocjek3q.json" mode="bounce"
+          background="rgba(232, 14, 14, 0)" speed="1" style="width: 200px; height: 200px;" loop autoplay>
+        </lottie-player>
+      </div>
+
+      <form class="btn-search">
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="input-select">
+              <select class="selectbox" data-trigger="">
+                <option placeholder="">Category</option>
+                <option value=1>품목명</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-field second-wrap">
+            <input id="search" type="text" placeholder="Enter Keywords?" />
           </div>
         </div>
+      </form>
+    </div>
+    <span class="js_result">검색 결과</span>
+</div>
 
-        <div class="input-field second-wrap">
-          <input id="search" type="text" placeholder="Enter Keywords?" />
-        </div>
-      </div>
-    </form>
+<!-- 여기를 확인해 주세요 -->
+<div class="list_hide form">
+  <div class="wrapper">
+    <div class="swiper-container">
+      <div class="swiper-wrapper"></div>
+    </div>
 
-    <span class ="js_result">검색 결과</span>
-
-    <span class ="paintpill">검색 테이블</span>
-
+    <div class="swiper-pagination"></div>
+    <div class="swiper-prev">
+      <div class="material-icons">arrow_back</div>
+    </div>
+    <div class="swiper-next">
+      <div class="material-icons">arrow_forward</div>
+    </div>
   </div>
+</div>
 
 
+<script src="js/extention/choices.js"></script>
+<script src="js/function.js"></script>
+<script>
+  const choices = new Choices('[data-trigger]',
+    {
+      searchEnabled: false,
+      itemSelectText: '',
+    });
 
 
-  <script src="js/extention/choices.js"></script>
-  <script src="js/function.js"></script>
+  const swiper123 = new Swiper('.swiper-container', {
+    slidesPerView: 3, // 한 번에 보여줄 슬라이드 개수
+    spaceBetween: 10, // 슬라이드 사이 여백
+    centeredSlides: true, // 1번 슬라이드가 가운데 보이기
+    loop: true, // 반복 재생 여부
+    autoplay: { // 자동 재생 여부
+      delay: 3000 // 3초마다 슬라이드 바뀜
+    },
+    pagination: { // 페이지 번호 사용 여부
+      el: '.swiper-pagination', // 페이지 번호 요소 선택자
+      clickable: true, // 사용자의 페이지 번호 요소 제어 가능 여부
+    },
+    navigation: { // 슬라이드 이전/다음 버튼 사용 여부
+      prevEl: '.swiper-prev', // 이전 버튼 선택자
+      nextEl: '.swiper-next' // 다음 버튼 선택자
+    }
+  });
 
-  <script>
-    const choices = new Choices('[data-trigger]',
-      {
-        searchEnabled: false,
-        itemSelectText: '',
-      });
+</script>
 
-  </script>
-
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>

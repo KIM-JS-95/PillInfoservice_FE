@@ -1,82 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Shop Item - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/info.css" rel="stylesheet" />
-    </head>
+<!doctype html>
+<html lang="ko">
 
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>Swiper</title>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-        <!-- Product section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
-                    <div class="col-md-6">
-                        <div class="small mb-1">SKU: BST-498</div>
-                        <h1 class="display-5 fw-bolder">Shop item template</h1>
-                        <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$45.00</span>
-                            <span>$40.00</span>
-                        </div>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
-                        </div>
-                    </div>
+    <style>
+        .wrapper {
+            height: 500px;
+            width: 100%;
+            /* 이미지 높이 + 여백 */
+            background: #f6f5ef;
+            position: relative;
+            margin-top: 10%;
+        }
+
+        .wrapper .swiper-container {
+            width: calc(600px * 3 + 20px);
+            /* 이미지 너비 * 보여줄 개수 + 여백의 합 */
+            height: min-content;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            margin-left: calc((600px * 3 + 20px) / -2);
+            /* 전체 너비의 반의 음수 값 */
+        }
+
+        .wrapper :not(.swiper-slide-active).swiper-slide {
+            opacity: 0.5;
+            transition: opacity 1s;
+            position: relative;
+        }
+
+        .wrapper .swiper-slide .btn {
+            position: absolute;
+            bottom: px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .wrapper .swiper-pagination {
+            bottom: 10px;
+            left: 0;
+            right: 0;
+        }
+
+        .wrapper .swiper-pagination .swiper-pagination-bullet {
+            background: transparent;
+            background-image: url('./image/slide_pager.png');
+            width: 12px;
+            height: 12px;
+            outline: none;
+        }
+
+        .wrapper .swiper-pagination .swiper-pagination-bullet:not(:last-child) {
+            margin-right: 6px;
+        }
+
+        .wrapper .swiper-pagination .swiper-pagination-bullet-active {
+            background-image: url('./image/slide_pager_on.png');
+        }
+
+        .wrapper .swiper-prev,
+        .wrapper .swiper-next {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s;
+        }
+
+        .wrapper .swiper-prev {
+            left: 50%;
+            margin-left: -380px;
+            /* 이미지 너비 + 간격 */
+        }
+
+        .wrapper .swiper-next {
+            right: 50%;
+            margin-right: -380px;
+            /* 이미지 너비 + 간격 */
+        }
+
+        .wrapper .swiper-prev:hover,
+        .wrapper .swiper-next:hover {
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="https://placeimg.com/600/400/a" alt="" />
+                </div>
+                
+                <div class="swiper-slide">
+                    <img src="https://placeimg.com/600/400/b" alt="" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://placeimg.com/600/400/c" alt="" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://placeimg.com/600/400/d" alt="" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://placeimg.com/600/400/e" alt="" />
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-prev">
+            <div class="material-icons">arrow_back</div>
+        </div>
+        <div class="swiper-next">
+            <div class="material-icons">arrow_forward</div>
+        </div>
+    </div>
+
+    <script>
+        new Swiper('.swiper-container', {
+            slidesPerView: 3, // 한 번에 보여줄 슬라이드 개수
+            spaceBetween: 10, // 슬라이드 사이 여백
+            centeredSlides: true, // 1번 슬라이드가 가운데 보이기
+            loop: true, // 반복 재생 여부
+            autoplay: { // 자동 재생 여부
+                delay: 3000 // 3초마다 슬라이드 바뀜
+            },
+            pagination: { // 페이지 번호 사용 여부
+                el: '.swiper-pagination', // 페이지 번호 요소 선택자
+                clickable: true, // 사용자의 페이지 번호 요소 제어 가능 여부
+            },
+            navigation: { // 슬라이드 이전/다음 버튼 사용 여부
+                prevEl: '.swiper-prev', // 이전 버튼 선택자
+                nextEl: '.swiper-next' // 다음 버튼 선택자
+            }
+        });
+    </script>
 
 
-        <!-- Related items section -->
-        <section class="py-5 bg-light">
-            <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">Related products</h2>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>  
-        </section>
+</body>
 
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-        </footer>
-
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-         <!-- <script src="js/scripts.js"></script> -->
-        <script src="js/function.js"></script>
-    </body>
 </html>

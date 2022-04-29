@@ -4,35 +4,27 @@
     margin-bottom: 200px;
 }
 
-.header{
-    text-align: center;
-}
-
-h2 {
-    text-align: center;
+.hide {
+    margin: 10% 0%;
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
-    position: relative;
-    top: 25%;
     font-size: 40px;
     color: #333333;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-
-.notice {
-    position: absolute;
-    top: 10%;
-}
+.notice {}
 
 .js_result {
-    position: absolute;
-    bottom: 40%;
+    position: relative;
+    top: 25px;
 }
 
 .form {
-  display: none;
+    display: none;
 }
 
 
@@ -41,4 +33,149 @@ h2 {
     transition: color .5s ease-in-out;
     font-size: 34px;
     margin-top: 0px;
+}
+
+.featured {
+    padding: var(--padding);
+    padding-top: 25px;
+    border-top: var(--borderTop);
+}
+
+/* .featured .featured__title {
+    margin: 0;
+    font-size: 18px;
+    margin-bottom: 20px;
+} */
+
+.featured .featured__wrapper {
+    display: grid;
+    grid-auto-columns: minmax(200px, 1fr);
+    grid-auto-flow: column;
+    grid-gap: 10px;
+}
+
+.featured-meal {
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    color: white;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center center;
+}
+
+.featured-meal:nth-child() {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(https://i.pinimg.com/564x/d9/26/7e/d9267eb5f9756e0664191f0d148a11bd.jpg);
   }
+
+.featured-meal__title {
+    margin-right: 10px;
+}
+
+.featured-meal__button {
+    background-color: white;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    height: 500px;
+    width: 100%;
+    /* 이미지 높이 + 여백 */
+    background: #f6f5ef;
+    position: relative;
+    margin-top: 10%;
+}
+
+.wrapper .swiper-container {
+    width: calc(600px * 3 + 20px);
+    /* 이미지 너비 * 보여줄 개수 + 여백의 합 */
+    height: min-content;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: calc((600px * 3 + 20px) / -2);
+    /* 전체 너비의 반의 음수 값 */
+}
+
+.wrapper :not(.swiper-slide-active).swiper-slide {
+    opacity: 0.5;
+    transition: opacity 1s;
+    position: relative;
+}
+
+.wrapper .swiper-slide .btn {
+    position: absolute;
+    bottom: px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.wrapper .swiper-pagination {
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+.wrapper .swiper-pagination .swiper-pagination-bullet {
+    background: transparent;
+    background-image: url('./image/slide_pager.png');
+    width: 12px;
+    height: 12px;
+    outline: none;
+}
+
+.wrapper .swiper-pagination .swiper-pagination-bullet:not(:last-child) {
+    margin-right: 6px;
+}
+
+.wrapper .swiper-pagination .swiper-pagination-bullet-active {
+    background-image: url('./image/slide_pager_on.png');
+}
+
+.wrapper .swiper-prev,
+.wrapper .swiper-next {
+    width: 42px;
+    height: 42px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.wrapper .swiper-prev {
+    left: 50%;
+    margin-left: -380px;
+    /* 이미지 너비 + 간격 */
+}
+
+.wrapper .swiper-next {
+    right: 50%;
+    margin-right: -380px;
+    /* 이미지 너비 + 간격 */
+}
+
+.wrapper .swiper-prev:hover,
+.wrapper .swiper-next:hover {
+    background: #333;
+    color: #fff;
+}
+
+.swiper-slide_image{
+    height: 400;
+    width:600;
+}

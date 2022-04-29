@@ -1,10 +1,13 @@
 
-const form = document.querySelector(".s003");
+
+const form = document.querySelector(".hide");
 const result = document.querySelector(".js_result");
-const paintpill = document.querySelector(".paintpill");
+const featured__wrapper = document.querySelector(".featured__wrapper");
 const notice = document.querySelector(".notice");
+const list_hide = document.querySelector(".list_hide");
 
 const SHOWING_CN = "form";
+let itemlist = [];
 
 // 검색 보내기
 function postInfo(event) {
@@ -39,7 +42,6 @@ function postInfo(event) {
 };
 
 // 데이터 배열에 저장
-let itemlist = [];
 function searchInfo(json) {
   itemlist = [];
 
@@ -49,9 +51,8 @@ function searchInfo(json) {
     json.body.items.forEach((element) => {
       itemlist.push(element);
     });
-    paintfunction();
+    paintfunction(itemlist);
   }
-  console.log(itemlist);
 }
 
 function search_check(pillName) {
@@ -72,15 +73,44 @@ function showup() {
     .then((json) => notice.innerText = json.content)
 }
 
-function paintfunction() {
+function paintfunction(itemlist) {
   const currentClass = form.className;
+  const curentpill = list_hide.classList;
+
   if (currentClass !== SHOWING_CN) {
     form.className = SHOWING_CN;
   } else {
     form.className = '';
   }
-  paintpill.classList.add(SHOWING_CN);
-  paintpill.innerText = "검색 결과를 보여주어라";
+  
+  if (!curentpill.contains(SHOWING_CN)) {
+    list_hide.classList.add(SHOWING_CN);
+  } else {
+    list_hide.classList.remove(SHOWING_CN);
+  }
+
+  len = itemlist.length;
+  for(let i=0; i<len; i++){
+    // 리스트를 append 해가며 추가하는 방식
+    list_create(i, itemlist[i])
+  }
+}
+
+// 이미지 상세정보 제공 팝업창
+const swiper = document.querySelector(".swiper-wrapper");
+
+function list_create(index, item){
+  const swiper_slide =document.createElement("div");
+  swiper_slide.classList.add("swiper-slide");
+
+  const img =document.createElement("img");
+  img.setAttribute("src", `${item.ITEM_IMAGE}`);
+  img.setAttribute("alt","");
+  img.classList.add("swiper-slide_image");
+
+  swiper_slide.appendChild(img);
+  swiper.appendChild(swiper_slide);
+
 }
 
 function init() {
