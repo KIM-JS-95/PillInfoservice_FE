@@ -1,5 +1,3 @@
-
-
 const form = document.querySelector(".hide");
 const result = document.querySelector(".js_result");
 const featured__wrapper = document.querySelector(".featured__wrapper");
@@ -82,7 +80,7 @@ function paintfunction(itemlist) {
   } else {
     form.className = '';
   }
-  
+
   if (!curentpill.contains(SHOWING_CN)) {
     list_hide.classList.add(SHOWING_CN);
   } else {
@@ -90,27 +88,66 @@ function paintfunction(itemlist) {
   }
 
   len = itemlist.length;
-  for(let i=0; i<len; i++){
+  for (let i = 0; i < len; i++) {
     // 리스트를 append 해가며 추가하는 방식
-    list_create(i, itemlist[i])
+    list_create(itemlist[i])
   }
 }
+
+
 
 // 이미지 상세정보 제공 팝업창
 const swiper = document.querySelector(".swiper-wrapper");
 
-function list_create(index, item){
-  const swiper_slide =document.createElement("div");
+function list_create(item) {
+  const swiper_slide = document.createElement("div");
   swiper_slide.classList.add("swiper-slide");
 
-  const img =document.createElement("img");
-  img.setAttribute("src", `${item.ITEM_IMAGE}`);
-  img.setAttribute("alt","");
-  img.classList.add("swiper-slide_image");
+  const Myimg = document.createElement("img");
+  Myimg.setAttribute("id", "myImg");
+  Myimg.setAttribute("src", `${item.ITEM_IMAGE}`);
+  Myimg.setAttribute("alt", "snow");
+  Myimg.addEventListener("click", item_view)
+  Myimg.classList.add("swiper-slide_image");
 
-  swiper_slide.appendChild(img);
+  const myModal = document.createElement("div");
+  myModal.setAttribute("id","myModal");
+  myModal.classList.add("model");
+
+  const close = document.createElement("span");
+  close.addEventListener("click",item_close);
+  close.classList.add("clode");
+
+  const model_content = document.createElement("img");
+  model_content.classList.add("modal-content");
+  model_content.setAttribute("id", "img01");
+
+  const caption = document.createElement("div");
+  caption.classList.add("caption");
+  caption.innerText = `${item.ITEM_NAME}`;
+
+
+  myModal.appendChild(close);
+  myModal.appendChild(model_content);
+  myModal.appendChild(caption);
+
+  swiper_slide.appendChild(Myimg);
+  swiper_slide.appendChild(myModal);
   swiper.appendChild(swiper_slide);
 
+}
+
+function item_view(event) {
+  console.log(event.target.parentElement);
+  // var modalImg = document.getElementById("img01");
+  // var captionText = document.getElementById("caption");
+  // modal.style.display = "block";
+  // modalImg.src = this.src;
+  // captionText.innerHTML = 123;
+}
+
+function item_close(modal) {
+modal.style.display = "none";
 }
 
 function init() {

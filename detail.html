@@ -1,142 +1,188 @@
-<!doctype html>
-<html lang="ko">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Swiper</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
     <style>
-        .wrapper {
-            height: 500px;
-            width: 100%;
-            /* 이미지 높이 + 여백 */
-            background: #f6f5ef;
-            position: relative;
-            margin-top: 10%;
+        body {
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        .wrapper .swiper-container {
-            width: calc(600px * 3 + 20px);
-            /* 이미지 너비 * 보여줄 개수 + 여백의 합 */
-            height: min-content;
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            margin-left: calc((600px * 3 + 20px) / -2);
-            /* 전체 너비의 반의 음수 값 */
-        }
-
-        .wrapper :not(.swiper-slide-active).swiper-slide {
-            opacity: 0.5;
-            transition: opacity 1s;
-            position: relative;
-        }
-
-        .wrapper .swiper-slide .btn {
-            position: absolute;
-            bottom: px;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-
-        .wrapper .swiper-pagination {
-            bottom: 10px;
-            left: 0;
-            right: 0;
-        }
-
-        .wrapper .swiper-pagination .swiper-pagination-bullet {
-            background: transparent;
-            background-image: url('./image/slide_pager.png');
-            width: 12px;
-            height: 12px;
-            outline: none;
-        }
-
-        .wrapper .swiper-pagination .swiper-pagination-bullet:not(:last-child) {
-            margin-right: 6px;
-        }
-
-        .wrapper .swiper-pagination .swiper-pagination-bullet-active {
-            background-image: url('./image/slide_pager_on.png');
-        }
-
-        .wrapper .swiper-prev,
-        .wrapper .swiper-next {
-            width: 42px;
-            height: 42px;
-            border: 2px solid #333;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1;
+        #myImg {
+            border-radius: 5px;
             cursor: pointer;
-            outline: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.4s;
+            transition: 0.3s;
         }
 
-        .wrapper .swiper-prev {
-            left: 50%;
-            margin-left: -380px;
-            /* 이미지 너비 + 간격 */
+        #myImg:hover {
+            opacity: 0.7;
         }
 
-        .wrapper .swiper-next {
-            right: 50%;
-            margin-right: -380px;
-            /* 이미지 너비 + 간격 */
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9);
+            /* Black w/ opacity */
         }
 
-        .wrapper .swiper-prev:hover,
-        .wrapper .swiper-next:hover {
-            background: #333;
-            color: #fff;
+        /* Modal Content (image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Caption of Modal Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Add Animation */
+        .modal-content,
+        #caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
+
+
 <body>
 
-    <div class="wrapper">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
 
-                <div class="swiper-slide">
-                    <img src="https://placeimg.com/600/400/a" alt="" />
-                </div>
-                
-                <div class="swiper-slide">
-                    <img src="https://placeimg.com/600/400/b" alt="" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://placeimg.com/600/400/c" alt="" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://placeimg.com/600/400/d" alt="" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://placeimg.com/600/400/e" alt="" />
+
+
+
+    <div class="list_hide">
+        <div class="wrapper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <img id="myImg" src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/01/28/111500268.2.jpg" alt="">
+                        
+                        <div id="myModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption">123123</div>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-prev">
-            <div class="material-icons">arrow_back</div>
-        </div>
-        <div class="swiper-next">
-            <div class="material-icons">arrow_forward</div>
-        </div>
     </div>
 
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-prev">
+        <div class="material-icons">arrow_back</div>
+    </div>
+    <div class="swiper-next">
+        <div class="material-icons">arrow_forward</div>
+    </div>
+
+    </div>
+    </div>
+
+
+    <script src="js/extention/choices.js"></script>
+    <script src="js/function.js"></script>
+
     <script>
-        new Swiper('.swiper-container', {
+        const choices = new Choices('[data-trigger]',
+            {
+                searchEnabled: false,
+                itemSelectText: '',
+            });
+
+
+        const swiper123 = new Swiper('.swiper-container', {
             slidesPerView: 3, // 한 번에 보여줄 슬라이드 개수
             spaceBetween: 10, // 슬라이드 사이 여백
             centeredSlides: true, // 1번 슬라이드가 가운데 보이기
@@ -153,9 +199,10 @@
                 nextEl: '.swiper-next' // 다음 버튼 선택자
             }
         });
+
     </script>
 
-
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>

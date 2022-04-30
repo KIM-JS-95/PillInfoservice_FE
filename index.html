@@ -19,7 +19,7 @@
   <span class="notice">공지사항</span>
   <h2 class="title">Eat Before Knowing The Medicine</h2>
 
-  <body>
+  <body onload>
 
     <div class="s003">
       <div class="lottie">
@@ -65,7 +65,7 @@
   </div>
 </div>
 
-
+<script async src="js/swiper.js"></script>
 <script src="js/extention/choices.js"></script>
 <script src="js/function.js"></script>
 <script>
@@ -74,29 +74,23 @@
       searchEnabled: false,
       itemSelectText: '',
     });
+</script>
 
-
-  const swiper123 = new Swiper('.swiper-container', {
-    slidesPerView: 3, // 한 번에 보여줄 슬라이드 개수
-    spaceBetween: 10, // 슬라이드 사이 여백
-    centeredSlides: true, // 1번 슬라이드가 가운데 보이기
-    loop: true, // 반복 재생 여부
-    autoplay: { // 자동 재생 여부
-      delay: 3000 // 3초마다 슬라이드 바뀜
-    },
-    pagination: { // 페이지 번호 사용 여부
-      el: '.swiper-pagination', // 페이지 번호 요소 선택자
-      clickable: true, // 사용자의 페이지 번호 요소 제어 가능 여부
-    },
-    navigation: { // 슬라이드 이전/다음 버튼 사용 여부
-      prevEl: '.swiper-prev', // 이전 버튼 선택자
-      nextEl: '.swiper-next' // 다음 버튼 선택자
+<script>
+      function item_view(event) {
+        console.log(event.target.parentElement);
+        // var modalImg = document.getElementById("img01");
+        // var captionText = document.getElementById("caption");
+        // modal.style.display = "block";
+        // modalImg.src = this.src;
+        // captionText.innerHTML = 123;
     }
-  });
-
+  
+    function item_close(modal) {
+    modal.style.display = "none";
+  }
 </script>
 
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
-
 </html>
