@@ -4,6 +4,8 @@ const featured__wrapper = document.querySelector(".featured__wrapper");
 const notice = document.querySelector(".notice");
 const list_hide = document.querySelector(".list_hide");
 
+const itemshowup = document.querySelector(".item_showup");
+
 const SHOWING_CN = "form";
 let itemlist = [];
 
@@ -102,21 +104,31 @@ const swiper = document.querySelector(".swiper-wrapper");
 function list_create(item) {
   const swiper_slide = document.createElement("div");
   swiper_slide.classList.add("swiper-slide");
+  const item_name = document.createElement("div");
+  item_name.innerText= `${item.ITEM_NAME}`
 
+  // 슬라이드 이미지
   const Myimg = document.createElement("img");
   Myimg.setAttribute("id", "myImg");
   Myimg.setAttribute("src", `${item.ITEM_IMAGE}`);
-  Myimg.setAttribute("alt", "snow");
-  Myimg.addEventListener("click", item_view)
+  Myimg.setAttribute("alt", `${item.ITEM_NAME}`);
   Myimg.classList.add("swiper-slide_image");
 
+  swiper_slide.appendChild(item_name);
+  swiper_slide.appendChild(Myimg);
+  swiper.appendChild(swiper_slide);
+
+  Myimg.addEventListener("click", item_view);
+}
+
+function item_view() {
   const myModal = document.createElement("div");
-  myModal.setAttribute("id","myModal");
-  myModal.classList.add("model");
+  myModal.setAttribute("id", "myModal");
+  myModal.classList.add("modal");
 
   const close = document.createElement("span");
-  close.addEventListener("click",item_close);
-  close.classList.add("clode");
+  close.classList.add("close");
+  close.innerText="❌";
 
   const model_content = document.createElement("img");
   model_content.classList.add("modal-content");
@@ -124,31 +136,20 @@ function list_create(item) {
 
   const caption = document.createElement("div");
   caption.classList.add("caption");
-  caption.innerText = `${item.ITEM_NAME}`;
-
-
+  caption.innerText =  this.alt;
   myModal.appendChild(close);
   myModal.appendChild(model_content);
   myModal.appendChild(caption);
+  itemshowup.appendChild(myModal);
 
-  swiper_slide.appendChild(Myimg);
-  swiper_slide.appendChild(myModal);
-  swiper.appendChild(swiper_slide);
+  myModal.style.display = "block";
+  model_content.src = this.src;
 
+  close.addEventListener("click", function(){
+    myModal.style.display = "none"});
 }
 
-function item_view(event) {
-  console.log(event.target.parentElement);
-  // var modalImg = document.getElementById("img01");
-  // var captionText = document.getElementById("caption");
-  // modal.style.display = "block";
-  // modalImg.src = this.src;
-  // captionText.innerHTML = 123;
-}
 
-function item_close(modal) {
-modal.style.display = "none";
-}
 
 function init() {
   showup;

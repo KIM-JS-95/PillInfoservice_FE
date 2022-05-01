@@ -1,208 +1,137 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="colorlib.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
 
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+#myImg:hover {opacity: 0.7;}
 
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: absolute; /* Stay in place */
+ 
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
 
-        #myImg {
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
 
-        #myImg:hover {
-            opacity: 0.7;
-        }
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
 
-        /* The Modal (background) */
-        .modal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Stay in place */
-            z-index: 1;
-            /* Sit on top */
-            padding-top: 100px;
-            /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Full width */
-            height: 100%;
-            /* Full height */
-            overflow: auto;
-            /* Enable scroll if needed */
-            background-color: rgb(0, 0, 0);
-            /* Fallback color */
-            background-color: rgba(0, 0, 0, 0.9);
-            /* Black w/ opacity */
-        }
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
 
-        /* Modal Content (image) */
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-        }
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
 
-        /* Caption of Modal Image */
-        #caption {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            text-align: center;
-            color: #ccc;
-            padding: 10px 0;
-            height: 150px;
-        }
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
 
-        /* Add Animation */
-        .modal-content,
-        #caption {
-            -webkit-animation-name: zoom;
-            -webkit-animation-duration: 0.6s;
-            animation-name: zoom;
-            animation-duration: 0.6s;
-        }
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-        @-webkit-keyframes zoom {
-            from {
-                -webkit-transform: scale(0)
-            }
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-            to {
-                -webkit-transform: scale(1)
-            }
-        }
-
-        @keyframes zoom {
-            from {
-                transform: scale(0)
-            }
-
-            to {
-                transform: scale(1)
-            }
-        }
-
-        /* The Close Button */
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* 100% Image Width on Smaller Screens */
-        @media only screen and (max-width: 700px) {
-            .modal-content {
-                width: 100%;
-            }
-        }
-    </style>
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+</style>
 </head>
-
-
-
 <body>
 
+<h2>Image Modal</h2>
+<p>In this example, we use CSS to create a modal (dialog box) that is hidden by default.</p>
+<p>We use JavaScript to trigger the modal and to display the current image inside the modal when it is clicked on. Also note that we use the value from the image's "alt" attribute as an image caption text inside the modal.</p>
+
+<img id="myImg" src="https://www.w3schools.com/howto/img_snow.jpg" alt="Snow" style="width:100%;max-width:300px">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+
+// myModel
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
 
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
 
-    <div class="list_hide">
-        <div class="wrapper">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <img id="myImg" src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/01/28/111500268.2.jpg" alt="">
-                        
-                        <div id="myModal" class="modal">
-                            <span class="close">&times;</span>
-                            <img class="modal-content" id="img01">
-                            <div id="caption">123123</div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="swiper-pagination"></div>
-
-    <div class="swiper-prev">
-        <div class="material-icons">arrow_back</div>
-    </div>
-    <div class="swiper-next">
-        <div class="material-icons">arrow_forward</div>
-    </div>
-
-    </div>
-    </div>
-
-
-    <script src="js/extention/choices.js"></script>
-    <script src="js/function.js"></script>
-
-    <script>
-        const choices = new Choices('[data-trigger]',
-            {
-                searchEnabled: false,
-                itemSelectText: '',
-            });
-
-
-        const swiper123 = new Swiper('.swiper-container', {
-            slidesPerView: 3, // 한 번에 보여줄 슬라이드 개수
-            spaceBetween: 10, // 슬라이드 사이 여백
-            centeredSlides: true, // 1번 슬라이드가 가운데 보이기
-            loop: true, // 반복 재생 여부
-            autoplay: { // 자동 재생 여부
-                delay: 3000 // 3초마다 슬라이드 바뀜
-            },
-            pagination: { // 페이지 번호 사용 여부
-                el: '.swiper-pagination', // 페이지 번호 요소 선택자
-                clickable: true, // 사용자의 페이지 번호 요소 제어 가능 여부
-            },
-            navigation: { // 슬라이드 이전/다음 버튼 사용 여부
-                prevEl: '.swiper-prev', // 이전 버튼 선택자
-                nextEl: '.swiper-next' // 다음 버튼 선택자
-            }
-        });
-
-    </script>
-
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
-
 </html>
