@@ -102,51 +102,95 @@ function paintfunction(itemlist) {
 const swiper = document.querySelector(".swiper-wrapper");
 
 function list_create(item) {
+
+  const item_imege = `${item.ITEM_IMAGE}`;
+  const item_names = `${item.ITEM_NAME}`;
+
+  const inner =
+    `<span>
+  <li>💊 품목명</li>
+  <ul>
+    <li>${item.ITEM_SEQ}</li>
+  </ul>
+
+  <br>
+
+  <li>💊 품목명</li>
+  <ul>
+    <li>${item.ETC_OTC_NAME}</li>
+    <li>${item.CLASS_NAME}</li>
+  </ul>
+
+  <br>
+
+  <li>💊 업체명</li>
+  <ul>
+    <li>${item.ENTP_NAME}</li>
+  </ul>
+
+  <br>
+
+  <li>💊 성상</li>
+  <ul>  
+    <li>${item.CHART}</li>
+  </ul>
+
+  <br>
+
+  <li>💊 일렬번호</li>
+  <ul>
+    <li>${item.ITEM_SEQ}</li>
+  </ul>
+      </span>`;
+
   const swiper_slide = document.createElement("div");
   swiper_slide.classList.add("swiper-slide");
   const item_name = document.createElement("div");
-  item_name.innerText= `${item.ITEM_NAME}`
+  item_name.innerText = `${item.ITEM_NAME}`
 
   // 슬라이드 이미지
   const Myimg = document.createElement("img");
   Myimg.setAttribute("id", "myImg");
-  Myimg.setAttribute("src", `${item.ITEM_IMAGE}`);
-  Myimg.setAttribute("alt", `${item.ITEM_NAME}`);
+  Myimg.setAttribute("src", item_imege);
+  Myimg.setAttribute("alt", item_names);
   Myimg.classList.add("swiper-slide_image");
 
   swiper_slide.appendChild(item_name);
   swiper_slide.appendChild(Myimg);
   swiper.appendChild(swiper_slide);
 
-  Myimg.addEventListener("click", item_view);
+  Myimg.addEventListener("click", function() {item_view(inner, item_imege)});
 }
 
-function item_view() {
+function item_view(inner, item_imege) {
   const myModal = document.createElement("div");
   myModal.setAttribute("id", "myModal");
   myModal.classList.add("modal");
 
   const close = document.createElement("span");
   close.classList.add("close");
-  close.innerText="❌";
+  close.innerText = "❌";
 
   const model_content = document.createElement("img");
   model_content.classList.add("modal-content");
   model_content.setAttribute("id", "img01");
+  model_content.setAttribute("src", item_imege);
 
   const caption = document.createElement("div");
   caption.classList.add("caption");
-  caption.innerText =  this.alt;
+  caption.innerHTML = inner;
+  
   myModal.appendChild(close);
   myModal.appendChild(model_content);
   myModal.appendChild(caption);
   itemshowup.appendChild(myModal);
 
   myModal.style.display = "block";
-  model_content.src = this.src;
 
-  close.addEventListener("click", function(){
-    myModal.style.display = "none"});
+  close.addEventListener("click", function () {
+    myModal.style.display = "none"
+    myModal.remove();
+  });
 }
 
 
