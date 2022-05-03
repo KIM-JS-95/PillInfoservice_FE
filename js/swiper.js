@@ -1,6 +1,4 @@
-
-window.onload = function(){
-    new Swiper('.swiper-container', {
+new Swiper('.swiper-container', {
         slidesPerView: 3, // 한 번에 보여줄 슬라이드 개수
         spaceBetween: 10, // 슬라이드 사이 여백
         centeredSlides: true, // 1번 슬라이드가 가운데 보이기
@@ -17,15 +15,3 @@ window.onload = function(){
             nextEl: '.swiper-next' // 다음 버튼 선택자
         }
     });
-
-    // const Myimg = document.querySelector("#myImg");
-    // const modal = document.querySelector("#myModal");
-  
-    // Myimg.addEventListener("onclick", item_view);
-  
-    // const span = document.getElementsByClassName("close")[0];
-    // span.addEventListener("onclick", item_close(modal));
-  
-
-
-}

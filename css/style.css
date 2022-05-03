@@ -1,11 +1,7 @@
-.lottie {
-    background-color: rgba(232, 14, 14, 0);
-    position: absolute;
-    margin-bottom: 200px;
-}
 
 .hide {
-    margin: 10% 0%;
+    position: relative;
+    top: 30%;
     justify-content: center;
     align-items: center;
 }
@@ -16,7 +12,6 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.notice {}
 
 .js_result {
     position: relative;
@@ -209,22 +204,31 @@
 
 /* Modal Content (image) */
 .modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
+  margin: auto;
+  display: block;
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  width: 80%;
+  max-width: 700px;
 }
 
 /* Caption of Modal Image */
 .caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
+  text-align: left;
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  color: #ccc;
+  font-size: 18px;
+  padding: 10px 0;
+  height: 150px;
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  line-height: 150%;
+  list-style: none;
 }
 
 /* Add Animation */
@@ -280,3 +284,41 @@
         width: 100%;
     }
 }
+
+.load_back {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    width: 2em;
+    height: 2em;
+    border: 5px solid #f3f3f3;
+    border-top: 6px solid #9c41f2;
+    border-radius: 100%;
+    margin: auto;
+    visibility: hidden;
+    z-index: 2;
+    animation: spin 1s infinite linear;
+  }
+
+  .load{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background:rgba(131, 131, 131, 0.199);
+    visibility: hidden;
+}  
+
+  .display {
+    visibility: visible;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }

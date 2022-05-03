@@ -4,10 +4,11 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-
 body {
+  
   background-color: #a598ee;
   padding: 0%;
+  margin: 0%;
   text-align: center;
   animation: fadeIn 1s linear;
 }
@@ -782,8 +783,8 @@ legend {
 
 .s003 {
   position: relative;
-  bottom: 10%;
-  margin-top: 10%;
+  bottom: 5%;
+  margin-top: 3%;
   min-height: 10%;
   display: -ms-flexbox;
   display: flex;

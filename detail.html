@@ -1,224 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Snippts</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
+    .container {
+      max-width: 550px;
+      margin: auto;
+      padding: 0 1rem;
     }
 
-    #myImg {
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    #myImg:hover {
-      opacity: 0.7;
-    }
-
-    /* The Modal (background) */
-    .modal {
-      display: none;
-      /* Hidden by default */
-      position: absolute;
-      /* Stay in place */
-      padding-top: 100px;
-      /* Location of the box */
-      left: 0%;
-      top: 0;
+    textarea {
       width: 100%;
-      /* Full width */
-      height: 100%;
-      /* Full height */
-      overflow: auto;
-      /* Enable scroll if needed */
-      background-color: rgb(0, 0, 0);
-      /* Fallback color */
-      background-color: rgba(0, 0, 0, 0.9);
-      /* Black w/ opacity */
+      height: 8rem;
     }
 
-    /* Modal Content (image) */
-    .modal-content {
-      margin: auto;
-      display: block;
-      position: absolute;
-      left: 10%;
-      top: 20%;
-      width: 80%;
-      max-width: 700px;
-    }
-
-    /* Caption of Modal Image */
-    #caption {
-      margin: auto;
-      display: block;
-      width: 80%;
-      max-width: 700px;
-      color: #ccc;
-      font-size: 18px;
-      padding: 10px 0;
-      height: 150px;
-      position: absolute;
-      left: 50%;
-      top: 15%;
-      line-height: 150%;
-      list-style: none;
-    }
-
-    /* Add Animation */
-    .modal-content,
-    #caption {
-      -webkit-animation-name: zoom;
-      -webkit-animation-duration: 0.6s;
-      animation-name: zoom;
-      animation-duration: 0.6s;
-    }
-
-    @-webkit-keyframes zoom {
-      from {
-        -webkit-transform: scale(0)
-      }
-
-      to {
-        -webkit-transform: scale(1)
-      }
-    }
-
-    @keyframes zoom {
-      from {
-        transform: scale(0)
-      }
-
-      to {
-        transform: scale(1)
-      }
-    }
-
-    /* The Close Button */
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
+    button {
+      margin: 2rem 0;
+      width: 100%;
+      padding: 8px 0;
       cursor: pointer;
     }
 
-    /* 100% Image Width on Smaller Screens */
-    @media only screen and (max-width: 700px) {
-      .modal-content {
-        width: 100%;
+    /* creating css loader */
+
+    #loading {
+      width: 2rem;
+      height: 2rem;
+      border: 5px solid #f3f3f3;
+      border-top: 6px solid #9c41f2;
+      border-radius: 100%;
+      margin: auto;
+      visibility: hidden;
+      animation: spin 1s infinite linear;
+    }
+
+    #loading.display {
+      visibility: visible;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="container">
+  
+    <textarea id="inputPart" placeholder="Enter dummy data..."></textarea>
+   
+    <button id="submitInput">Submit</button>
 
-  <h2>Image Modal</h2>
-  <p>In this example, we use CSS to create a modal (dialog box) that is hidden by default.</p>
-  <p>We use JavaScript to trigger the modal and to display the current image inside the modal when it is clicked on.
-    Also note that we use the value from the image's "alt" attribute as an image caption text inside the modal.</p>
-
-  <img id="myImg" src="https://www.w3schools.com/howto/img_snow.jpg" alt="Snow" style="width:100%;max-width:300px">
-
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
+    <div id="loading"></div>
+  
+    <h1 id="showOutput"></h1>
   </div>
 
-
-
   <script>
-    // Get the modal
-    var modal = document.getElementById("myModal");
+    const textInput = document.querySelector("#inputPart");
+    const textOutput = document.querySelector("#showOutput");
+    const btn = document.querySelector("#submitInput");
 
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = document.getElementById("myImg");
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
+    // adding event listener to button
+    btn.addEventListener("click", fetchHandler);
 
+    // selecting loading div
+    const loader = document.querySelector("#loading");
 
-    const inner =
-      `<span>
-    <li>💊 품목명</li>
-    <ol>
-      <li>타이레놀정500밀리그람(아세트아미노펜)</li>
-    </ol>
-
-    <br>
-    
-    <li>💊 품목명</li>
-    <ul>
-      <li> 일반의약품</li>
-      <li>해열.진통.소염제</li>
-    </ul>
-
-    <br>
-
-    <li>💊 업체명</li>
-    <ul>
-      <li>(주)한국얀센</li>
-    </ul>
-
-    <br>
-    
-    <li>💊 성상</li>
-    <ul>  
-      <li> 흰색의 장방형 필름코팅정제</li>
-    </ul>
-
-    <br>
-
-    <li>💊 일렬번호</li>
-    <ul>
-      <li> 202106092 </li>
-    </ul>
-  </span>`
-
-    //     const inner =
-    //       ` <div>
-    //   <span>
-    //     <li> ``${item.ITEM_SEQ}``</li>
-    //     <li> ``${item.ITEM_NAME}``</li>
-    //     <li> ``${item.ENTP_NAME}``</li>
-    //     <li> ``${item.CLASS_NAME}``</li>
-    //     <li> ``${item.ETC_OTC_NAME}``</li>
-    //     <li> ``${item.CHART}``</li>
-    //     <li> 효능</li>
-    //   </span>
-    // </div>`
-
-    // myModel
-    img.onclick = function () {
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      captionText.innerHTML = inner;
+    // showing loading
+    function displayLoading() {
+      loader.classList.add("display");
+      // to stop loading after some time
+      setTimeout(() => {
+        loader.classList.remove("display");
+      }, 5000);
     }
 
+    // dummy url
+    var url = "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json"
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    function fetchHandler(event) {
+      displayLoading()
+      var input = textInput.value;
+      var finalURL = buildURL(input);
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-      modal.style.display = "none";
+      fetch(finalURL)
+        .then(response => response.json())
+        .then(json => {
+          hideLoading()
+          textOutput.innerText = json.contents.translated;
+        })
+    }
+
+        // hiding loading 
+        function hideLoading() {
+      loader.classList.remove("display");
+    }
+    
+    // creating url format
+    // we need 
+    // https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json?text="your input"
+
+    function buildURL(inputData) {
+      return `${url}?text=${inputData}`;
     }
   </script>
-
 </body>
 
 </html>
