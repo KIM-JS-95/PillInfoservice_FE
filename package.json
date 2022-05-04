@@ -1,27 +1,31 @@
 {
-  "name": "electron-updater-example",
-  "version": "0.8.1",
+  "name": "ebkm",
+  "version": "1.0.0",
   "main": "main.js",
   "description": "electron-updater example project",
-  "author": "Matt Haggard",
+  "author": "CutLine",
   "scripts": {
-    "publish": "electron-builder -p always"
+    "start": "electron .",
+    "publish": "electron-builder --win --x64"
   },
   "devDependencies": {
-    "electron": "^14.0.1",
-    "electron-builder": "^22.11.7",
-    "electron-notarize": "^1.1.1"
+    "electron": "^7.1.2",
+    "electron-builder": "^23.0.2"
   },
   "dependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
     "electron-log": "^4.4.1",
-    "electron-updater": "^4.3.9"
+    "electron-updater": "^4.3.9",
+    "fs.promises": "^0.1.2"
   },
   "build": {
-    "publish": [{
-      "provider": "github",
-      "owner": "KIM-JS-95",
-      "repo": "PillInfoservice_FE"
-  }],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "KIM-JS-95",
+        "repo": "PillInfoservice_FE"
+      }
+    ],
     "mac": {
       "category": "your.app.category.type"
     },
@@ -35,5 +39,14 @@
       "category": "your.app.category.type",
       "target": "AppImage"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KIM-JS-95/PillInfoservice_FE.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KIM-JS-95/PillInfoservice_FE/issues"
+  },
+  "homepage": "https://github.com/KIM-JS-95/PillInfoservice_FE#readme"
 }

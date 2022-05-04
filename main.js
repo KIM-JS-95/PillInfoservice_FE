@@ -1,9 +1,6 @@
-var promises_1 = require('fs.promises');
-
 const {app, BrowserWindow, Menu} = require('electron');
 const log = require('electron-log');
 const {autoUpdater} = require("electron-updater");
-
 //-------------------------------------------------------------------
 // Logging
 //
@@ -68,7 +65,7 @@ function createDefaultWindow() {
   win.on('closed', () => {
     win = null;
   });
-  win.loadURL(`file://${__dirname}/version.html#v${app.getVersion()}`);
+  win.loadURL(`file://${__dirname}/index.html#v${app.getVersion()}`);
   return win;
 }
 autoUpdater.on('checking-for-update', () => {
