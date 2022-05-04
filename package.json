@@ -19,13 +19,6 @@
     "fs.promises": "^0.1.2"
   },
   "build": {
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "KIM-JS-95",
-        "repo": "PillInfoservice_FE"
-      }
-    ],
     "mac": {
       "category": "your.app.category.type"
     },
