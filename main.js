@@ -22,6 +22,7 @@ function createWindow () {
 
 app.on('ready', () => {
   createWindow();
+  autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on('window-all-closed', function () {
