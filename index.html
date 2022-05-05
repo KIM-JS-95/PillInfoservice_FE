@@ -14,7 +14,6 @@
   <link href="css/style.css" rel="stylesheet" />
 
   <style>
-
     #notification {
       position: fixed;
       bottom: 20px;
@@ -37,7 +36,9 @@
   <div class="load_back"></div>
 
   <div class="hide">
-    <span class="notice">1.0.2 ver</span>
+
+    <span id="version"></span>
+
     <h2 class="title">Eat Before Knowing The Medicine</h2>
 
     <div class="s003">
@@ -101,6 +102,7 @@
         itemSelectText: '',
       });
   </script>
+
   <script>
     const { ipcRenderer } = require('electron');
     const version = document.getElementById('version');

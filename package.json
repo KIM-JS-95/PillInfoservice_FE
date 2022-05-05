@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KIM-JS-95/PillInfoservice_FE.git"
+    "url": "https://github.com/KIM-JS-95/PillInfoservice_FE.git"
   },
   "license": "ISC",
   "bugs": {
