@@ -12,22 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
   <link href="css/main.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
-
-  <style>
-    #notification {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 200px;
-      padding: 20px;
-      border-radius: 5px;
-      background-color: white;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link href="css/render.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -36,8 +21,6 @@
   <div class="load_back"></div>
 
   <div class="hide">
-
-    <span id="version"></span>
 
     <h2 class="title">Eat Before Knowing The Medicine</h2>
 
@@ -80,6 +63,11 @@
     </div>
   </div>
 
+
+  <div class="item_showup"></div>
+
+
+  <p id="version"></p>
   <div id="notification" class="hidden">
     <p id="message"></p>
     <button id="close-button" onClick="closeNotification()">
@@ -90,8 +78,7 @@
     </button>
   </div>
 
-  <div class="item_showup"></div>
-
+  
   <script async src="js/swiper.js"></script>
   <script src="js/extention/choices.js"></script>
   <script src="js/function.js"></script>
@@ -103,40 +90,7 @@
       });
   </script>
 
-  <script>
-    const { ipcRenderer } = require('electron');
-    const version = document.getElementById('version');
-    const notification = document.getElementById('notification');
-    const message = document.getElementById('message');
-    const restartButton = document.getElementById('restart-button');
-
-    ipcRenderer.send('app_version');
-    ipcRenderer.on('app_version', (event, arg) => {
-      ipcRenderer.removeAllListeners('app_version');
-      version.innerText = 'Version ' + arg.version;
-    });
-
-    ipcRenderer.on('update_available', () => {
-      ipcRenderer.removeAllListeners('update_available');
-      message.innerText = 'A new update is available. Downloading now...';
-      notification.classList.remove('hidden');
-    });
-
-    ipcRenderer.on('update_downloaded', () => {
-      ipcRenderer.removeAllListeners('update_downloaded');
-      message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
-      restartButton.classList.remove('hidden');
-      notification.classList.remove('hidden');
-    });
-
-    function closeNotification() {
-      notification.classList.add('hidden');
-    }
-
-    function restartApp() {
-      ipcRenderer.send('restart_app');
-    }
-  </script>
+  <script src="js/render.js"></script>
 
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
