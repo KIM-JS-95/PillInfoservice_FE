@@ -16,8 +16,8 @@
 </head>
 
 <body>
-  <!-- 로딩 화면 부분 -->
-  <div class="load"></div>
+
+  <!-- <div class="load"></div>
   <div class="load_back"></div>
 
   <div class="hide">
@@ -45,7 +45,6 @@
     <span class="js_result">검색 결과</span>
   </div>
 
-  <!-- 여기를 확인해 주세요 -->
   <div class="list_hide form">
     <div class="wrapper">
       <div class="swiper-container">
@@ -64,7 +63,8 @@
   </div>
 
 
-  <div class="item_showup"></div>
+  <div class="item_showup"></div> 
+-->
 
 
   <p id="version"></p>
@@ -90,7 +90,7 @@
         itemSelectText: '',
       });
 
-      const { ipcRenderer } = require('electron');
+const { ipcRenderer } = require('electron');
 const version = document.getElementById('version');
 const notification = document.getElementById('notification');
 const message = document.getElementById('message');
