@@ -1,12 +1,13 @@
 {
   "name": "EBMK",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "main.js",
   "description": "electron-updater example project",
   "author": "CutLine",
   "scripts": {
     "start": "electron .",
-    "publish": "electron-builder --win --x64"
+    "build": "electron-builder build --mac --win --publish never",
+    "deploy": "electron-builder build --mac --win --publish always"
   },
   "devDependencies": {
     "electron": "^7.1.2",
