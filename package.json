@@ -1,6 +1,6 @@
 {
-  "name": "ebkm",
-  "version": "1.0.2",
+  "name": "EBMK",
+  "version": "1.0.0",
   "main": "main.js",
   "description": "electron-updater example project",
   "author": "CutLine",
