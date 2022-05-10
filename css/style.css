@@ -30,17 +30,18 @@
     margin-top: 0px;
 }
 
+/*
 .featured {
     padding: var(--padding);
     padding-top: 25px;
     border-top: var(--borderTop);
 }
 
-/* .featured .featured__title {
+.featured .featured__title {
     margin: 0;
     font-size: 18px;
     margin-bottom: 20px;
-} */
+}
 
 .featured .featured__wrapper {
     display: grid;
@@ -77,12 +78,17 @@
     align-items: center;
     justify-content: center;
 }
+*/
 
+.list_hide{
+    position:absolute;
+    top: 5%;
+    right: 50%;
+}
 .wrapper {
     height: 500px;
-    width: 100%;
     /* 이미지 높이 + 여백 */
-    background: #f6f5ef;
+    background: #a598ee;
     position: relative;
     margin-top: 10%;
 }
@@ -92,7 +98,7 @@
     /* 이미지 너비 * 보여줄 개수 + 여백의 합 */
     height: min-content;
     position: absolute;
-    top: 10%;
+    top: 25%;
     left: 50%;
     margin-left: calc((600px * 3 + 20px) / -2);
     /* 전체 너비의 반의 음수 값 */
@@ -136,10 +142,6 @@
 
 .wrapper .swiper-prev,
 .wrapper .swiper-next {
-    width: 42px;
-    height: 42px;
-    border: 2px solid #333;
-    border-radius: 50%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -171,8 +173,7 @@
 }
 
 .swiper-slide_image{
-    height: 400;
-    width:600;
+    width: 70%;
 }
 
 
@@ -321,4 +322,10 @@
     to {
       transform: rotate(360deg);
     }
+  }
+
+  footer{
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
   }

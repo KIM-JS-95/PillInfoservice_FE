@@ -29,7 +29,7 @@ window.onload = function () {
       pillNum: ""
     };
 
-    fetch('http://localhost:8080/mypill', {
+    fetch('http://localhost:8081/mypill', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json;",
@@ -79,7 +79,7 @@ window.onload = function () {
 
   // 화면 올라오면 공지사항을 보여주세요
   function showup() {
-    fetch('http://localhost:8080', {
+    fetch('http://localhost:8081', {
       method: 'GET'
     })
       .then(function (res) {
@@ -88,6 +88,7 @@ window.onload = function () {
       .then((json) => notice.innerText = json.content)
   }
 
+  
   function paintfunction(itemlist) {
     const currentClass = form.className;
     const curentpill = list_hide.classList;
