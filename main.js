@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
-
+var path = require('path')
 let mainWindow;
 
 function createWindow () {
@@ -10,6 +10,7 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true,
     },
+    icon: path.join(__dirname, 'assets/icons/pngegg.ico')
   });
   mainWindow.loadFile('index.html');
   mainWindow.on('closed', function () {

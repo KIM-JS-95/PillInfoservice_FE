@@ -79,7 +79,7 @@ window.onload = function () {
 
   // 화면 올라오면 공지사항을 보여주세요
   function showup() {
-    fetch('http://localhost:8081', {
+    fetch('http://localhost:8080', {
       method: 'GET'
     })
       .then(function (res) {
