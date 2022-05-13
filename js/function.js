@@ -29,7 +29,7 @@ window.onload = function () {
       pillNum: ""
     };
 
-    fetch('http://localhost:8081/mypill', {
+    fetch('http://localhost:8080/mypill', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json;",
