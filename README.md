@@ -11,7 +11,7 @@
 <br>
 <br>
 
-![](assets\icons\pngegg.ico)
+![](/assets/icons/pngegg.ico)
 
 </div>
 
