@@ -63,13 +63,18 @@
 <br>
 <br>
 
+# EXE. 파일 다운 방법
+
+    오른쪽 메뉴의 Releases를 클릭하고 Assets 하단의 .exe 파일을 클릭해주세요!
 
 # 💊 Do you want to clone?
 
 ## 🍃 electron init
+
     npm init -y npm i -D electron
 
 ## 🍃 electron Start or Build
+
     npm run start
 
     npm run deploy
@@ -99,7 +104,7 @@
 <img width="100" height="100" src="https://www.inthenews.co.kr/data/photos/uploads/2020/08/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%85%B8%EC%85%98-%EB%A1%9C%EA%B3%A0.jpg">
 </a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://github.com/KIM-JS-95/PillInfoservice_FE">
+<a href="https://github.com/KIM-JS-95/PillI-Info-Service">
 <img width="200" height="100" src="https://velog.velcdn.com/images/gil0127/post/857b454c-74a1-4fbc-b00f-3d0aff6f1a55/111111111.png">
 </a>
 
