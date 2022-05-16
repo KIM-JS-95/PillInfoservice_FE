@@ -15,8 +15,8 @@ window.onload = function () {
   function postInfo(event) {
     event.preventDefault();
 
-    loading_page();
-    
+    //loading_page();
+
     const selectbox = document.querySelector(".selectbox").value;
     const pillName = document.getElementById("search").value;
     const pillNum = "";
@@ -28,7 +28,7 @@ window.onload = function () {
       pillName: pillName,
       pillNum: ""
     };
-
+    loading_page();
     fetch('http://localhost:8080/mypill', {
       method: 'POST',
       headers: {
@@ -37,7 +37,10 @@ window.onload = function () {
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((json) => searchInfo(json))
+      .then((json) => searchInfo(json)).catch(function(){
+        result.innerText = "서버와 연결이 안되어 있나봐요!";
+        loading_page();
+      })
   };
 
 
@@ -46,28 +49,39 @@ window.onload = function () {
     const load_back = document.querySelector(".load");
     const loader = document.querySelector(".load_back");
 
-    loader.classList.add("display");
-    load_back.classList.add("display");
-    
-    // to stop loading after some time
-    setTimeout(() => {
+    if (!loader.classList.contains("display") & !load_back.classList.contains("display")) {
+      loader.classList.add("display");
+      load_back.classList.add("display");
+    }
+    else {
+      // to stop loading after some time
       loader.classList.remove("display");
       load_back.classList.remove("display");
-    }, 5000);
+    }
   }
 
   // 데이터 배열에 저장
   function searchInfo(json) {
+    return new Promise((resolve, reject) =>{
     itemlist = [];
-
     if (json.body.items == "" || json.body.items == null || json.body.items == undefined) {
       result.innerText = "검색 결과를 찾을 수 없어요!";
-    } else {
+      loading_page();
+    }
+    else {
+      getData(json);
+      Promise.all(itemlist).then(paintfunction(itemlist))
+        .then(loading_page);
+    }
+  })
+}
+
+  function getData(json) {
+    return new Promise((resolve, reject) =>
       json.body.items.forEach((element) => {
         itemlist.push(element);
-      });
-      paintfunction(itemlist);
-    }
+      })
+    );
   }
 
   function search_check(pillName) {
@@ -88,7 +102,7 @@ window.onload = function () {
       .then((json) => notice.innerText = json.content)
   }
 
-  
+
   function paintfunction(itemlist) {
     const currentClass = form.className;
     const curentpill = list_hide.classList;
@@ -110,7 +124,8 @@ window.onload = function () {
       // 리스트를 append 해가며 추가하는 방식
       list_create(itemlist[i])
     }
-  }
+  };
+
 
 
 
@@ -126,33 +141,27 @@ window.onload = function () {
       `<span>
   <li>💊 품목명</li>
   <ul>
-    <li>${item.ITEM_SEQ}</li>
+    <li>${item.ITEM_NAME}</li>
   </ul>
 
-  <br>
-
-  <li>💊 품목명</li>
+  <li>💊 분류명</li>
   <ul>
-    <li>${item.ETC_OTC_NAME}</li>
     <li>${item.CLASS_NAME}</li>
   </ul>
-
-  <br>
 
   <li>💊 업체명</li>
   <ul>
     <li>${item.ENTP_NAME}</li>
   </ul>
 
-  <br>
-
   <li>💊 성상</li>
   <ul>  
     <li>${item.CHART}</li>
   </ul>
-
-  <br>
-
+  <li>💊 표시(앞)</li>
+  <ul>  
+    <li>${item.PRINT_FRONT}</li>
+  </ul>
   <li>💊 일렬번호</li>
   <ul>
     <li>${item.ITEM_SEQ}</li>
